@@ -1,0 +1,62 @@
+<% @title = "Search Your Registration" %>
+<h1>Search Your Registration</h1>
+<hr>
+<% if alert %>
+<div class="alert alert-danger alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <%= alert %> <%= link_to "Create New", new_registration_path, class: "btn btn-primary btn-xs" %>
+</div>
+<% end %>
+<div class="row">
+  <div class="col-lg-8">
+    <%= form_tag registrations_path, :method => 'get' do %>
+    <div class="input-group">
+      <%= text_field_tag :search, params[:search], placeholder: "Search by CNIC Only", class: "form-control" %>
+      <span class="input-group-btn">
+        <%= submit_tag "Search", :name => nil, class: "btn btn-default" %>
+      </span>
+    </div>
+    <% end %>
+  </div>
+</div>
+<br>
+<% if params[:search].present? %>
+  <% if @registrations.present? %>
+  <div class="row">
+    <div class="well well-sm">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>CNIC No</th>
+            <th>Student Name</th>
+            <th>Father's Name</th>
+            <th>Name of Year Examination</th>
+            <th>Date</th>
+            <th colspan="1"></th>
+          </tr>
+        </thead>
+      
+        <tbody>
+          <% @registrations.each do |registration| %>
+            <tr>
+              <td><%= registration.cnic_no %></td>
+              <td><%= registration.sname.titleize %></td>
+              <td><%= registration.fname.titleize %></td>
+              <td><%= registration.name_of_year_examination %></td>
+              <td><%= registration.registration_date.strftime("%d-%m-%Y") %></td>
+              <td><%= link_to 'View', registration, class: "btn btn-primary btn-xs" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <% else %>
+    <div class="alert alert-warning">No such result found with <b><%= params[:search] %></b>...!!! Search again with correct CNIC number with dashes.</div>
+  <% end %>
+<% else %>
+<% if alert.present? %>
+<% else %>
+  <div class="alert alert-info">Search your registration by typing your CNIC number with this format xxxxx-xxxxxxx-x.</div>
+<% end %>
+<% end %>

@@ -1,0 +1,11 @@
+<% if @registration.errors.any? %>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <strong><%= pluralize(@registration.errors.count, "error") %> prohibited this registration from being saved:</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <ol>
+    <% @registration.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ol>
+  </div>
+<% end %>

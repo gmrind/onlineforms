@@ -1,0 +1,86 @@
+<% if alert %>
+<div class="alert alert-danger alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <%= alert %> <%= link_to "Click Here", new_bankslip_path, class: "btn btn-primary btn-sm" %>
+</div>
+<% end %>
+<div class="row">
+  <div class="col-lg-8">
+    <%= form_tag bankslips_path, :method => 'get' do %>
+    <div class="input-group">
+      <%= text_field_tag :search, params[:search], placeholder: "Search by CNIC Only", class: "form-control" %>
+      <span class="input-group-btn">
+        <%= submit_tag "Search", :name => nil, class: "btn btn-default" %>
+      </span>
+    </div>
+    <% end %>
+  </div>
+</div>
+<br>
+<% if params[:search].present? %>
+  <% if @bankslips.present? %>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>CNIC</th>
+          <th>Name</th>
+          <th>Father's Name</th>
+          <th>Purpose</th>
+          <th>Bank</th>
+          <th colspan="1"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @bankslips.each do |bankslip| %>
+          <tr>
+            <td><%= link_to "#{bankslip.cnic}", bankslip %></td>
+            <td><%= bankslip.aname %></td>
+            <td><%= bankslip.fname %></td>
+            <td><%= bankslip.purpose.pname %></td>
+            <td><%= bankslip.bank.bname %></td>
+            <td><%= link_to '', edit_bankslip_path(bankslip), class: "btn glyphicon glyphicon-pencil" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <% else %>
+    <div class="alert alert-warning">There is no such result found with <b><%= params[:search] %></b>...!!! Search again with correct CNIC number.</div>
+  <% end %>
+<% else %>
+  <div class="alert alert-info">Search your bankslip by typing your CNIC number.</div>
+<% end %>
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+config -> initilitzer -> pdfkit.rb
+    respond_to do |format|
+        format.html
+        format.pdf { 
+        html = render_to_string(:action => "show.html.erb") 
+        kit = PDFKit.new(html) 
+        kit.stylesheets << "#{Rails.root}/public/stylesheets/application.css" 
+        kit.stylesheets << "#{Rails.root}/public/stylesheets/scaffold.scss"
+        send_data kit.to_pdf, :filename => "Your-custom-filename.pdf", :type => 'application/pdf' 
+      }
+    end
+    
+controllers -> bankslips_controller
+    def show
+    html = render_to_string(:layout => false , :action => 'show.html.erb')
+    kit = PDFKit.new(html, :encoding =>"UTF-8")
+    kit = PDFKit.new(html, :page_size =>"A4")
+    kit= PDFKit.new(html, root_url: 'http://onlineforms-gmrind.c9users.io')
+    PDFKit.new(html, protocol: 'https')
+    kit.stylesheets << "#{Rails.root.to_s}/app/assets/stylesheets/application.css"
+    #send_data(kit.to_pdf, :filename => "#{@bankslip.aname.titleize}_#{@bankslip.bank.bname}_bankslip.pdf", :type => 'application/pdf')
+    end
+    
+
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf {send_data(kit.to_pdf, :filename => "#{@bankslip.aname.titleize}_#{@bankslip.bank.bname}_bankslip.pdf", :type => 'application/pdf')}
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------

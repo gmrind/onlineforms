@@ -1,0 +1,29 @@
+<% @title = "#{@bankslip.aname.titleize} s/o #{@bankslip.fname.titleize} (#{@bankslip.purpose.pname}) #{@bankslip.bank.bname} Bankslip" %>
+<% content_for :head1 do %>
+<div class="alert alert-info"  id= "pdf_link">
+  <p><strong>Note:</strong> To download this bankslip in PDF format please use browser PDF converter. 
+    <%= link_to "Click Here to see instructions", "#", class: "btn btn-info btn-xs" %>
+    <%= link_to "Click to Print this Bankslip", '#', onclick: "printpage()", class: "btn btn-success btn-xs" %>
+    <%= link_to "Go Back to Bankslip Page", new_bankslip_path, class: "btn btn-default btn-xs" %>
+  </p>
+</div>
+
+<div class="container2">
+  <div class="list-1">
+    Depositer Copy - 1
+    <%= render 'datatable' %>
+  </div>
+  <div class="list-2">
+    Attach with Exam/Admission etc Form - 2
+    <%= render 'datatable' %>
+  </div>
+  <div class="list-3">
+    UoB Copy - 3
+    <%= render 'datatable' %>
+  </div>
+  <div class="list-4">
+    Bank Copy - 4
+    <%= render 'datatable' %>
+  </div>
+</div>
+<% end %>

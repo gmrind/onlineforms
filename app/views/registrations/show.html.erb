@@ -1,0 +1,91 @@
+<% @title = "#{@registration.sname.titleize} s/o #{@registration.fname.titleize} UOB Registration Form" %>
+<% content_for :head1 do %>
+<div class="alert alert-info"  id= "pdf_link">
+  <p><strong>Note:</strong> To download this registration form in PDF format please use browser PDF converter.
+  <%= link_to "Click Here to see instructions", "#", class: "btn btn-info btn-sm" %>
+  <%= link_to "Click to Print this Form", '#', onclick: "printpage()", class: "btn btn-success btn-sm" %>
+  <%= link_to 'Edit Form Again', edit_registration_path(@registration), class: "btn btn-primary btn-sm" %>
+  <%= link_to 'Back to From', new_registration_path, class: "btn btn-default btn-sm" %></p>
+</div>
+
+<div class="reg-container">
+  
+  <%= image_tag("https://1.bp.blogspot.com/-Jji3DqaGjsM/WDs0RbkUc7I/AAAAAAAAArc/S09Qg9VI8gEAnnya_romhqiYXuveMmlDACLcB/s1600/registration1.jpg", size: "1100x700", class: "reg-container") %>
+  
+  <div class="sname">
+    <%= @registration.sname.upcase %>
+  </div>
+  
+  <div class="fname">
+    <%= @registration.fname.upcase %>
+  </div>
+  
+  <div class="dateofbirth">
+    <%= @registration.d_of_b.strftime("%d-%m-%Y") %>
+  </div>
+  
+  <div class="nameofregistration">
+    <%= @registration.name_of_year_examination.upcase %>
+  </div>
+  
+  <div class="nameofsubjects">
+    <%= @registration.subjects.map(&:subname).sort.join(" ") %>
+  </div>
+  
+  <div class="previous-registration-no">
+    <%= @registration.previous_registration_no.upcase %>
+  </div>
+  
+  <div class="board-university">
+    <%= @registration.board_university %>
+  </div>
+  
+  <div class="local-domicile">
+    <%= @registration.local_domicile.titleize %>
+  </div>
+  
+  <div class="religion">
+    <%= @registration.religion.titleize %>
+  </div>
+  
+  <div class="cnic-no">
+    <%= @registration.cnic_no %>
+  </div>
+  
+  <div class="permanent-address">
+    <%= @registration.permanent_address %>
+  </div>
+  
+  <div class="present_address">
+    <%= @registration.present_address %>
+  </div>
+  
+  <div class="challan_no">
+    <%= @registration.challan_no %>
+  </div>
+  
+  <div class="reg_amount">
+    Rs. <%= @registration.amount %>/=
+  </div>
+  
+  <div class="reg_date">
+    <%= @registration.registration_date.strftime("%d/%m/%Y") %>
+  </div>
+  
+  <div>
+    <%= render 'table' %>
+  </div>
+  
+  <div class="reg_date_2">
+    <%= @registration.registration_date.strftime("%d/%m/%Y") %>
+  </div>
+  
+  <div class="otherpage">
+  <%= image_tag("https://2.bp.blogspot.com/-6SRsup_vuO0/WDs0RX9MDcI/AAAAAAAAArg/YvKVnUoFxfkw38auwBECMtLJx9gg9igVACLcB/s1600/registration2.jpg", size: "1100x700") %>
+  </div>
+  
+  <div class="reg_date_3">
+    <%= @registration.registration_date.strftime("%d/%m/%Y") %>
+  </div>
+</div>
+<% end %>

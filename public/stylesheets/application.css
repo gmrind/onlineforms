@@ -1,0 +1,138 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 14px;
+}
+@media print {
+  
+}
+
+.container {
+  width: 1500px;
+  margin: 0px;
+}
+.list-1 {
+  border-right: 2px solid black;
+  border-right-style: dashed;
+  border-bottom: 2px solid black;
+  border-bottom-style: dashed;
+  height: auto;
+  float: left;
+  padding: 15px;
+}
+.list-2 {
+  border-right: 2px solid black;
+  border-right-style: dashed;
+  border-bottom: 2px solid black;
+  border-bottom-style: dashed;
+  height: auto;
+  float: left;
+  padding: 15px;
+}
+.list-3 {
+  border-right: 2px solid black;
+  border-right-style: dashed;
+  border-bottom: 2px solid black;
+  border-bottom-style: dashed;
+  height: auto;
+  float: left;
+  padding: 15px;
+}
+.list-4 {
+  border-bottom: 2px solid black;
+  border-bottom-style: dashed;
+  height: auto;
+  float: left;
+  padding: 15px;
+}
+.notice {
+  font-size: 12px;
+}
+.logo {
+  margin-left: 130px;
+  margin-top: 10px;
+  height: 65px;
+  background-image: url("/images/uob.jpg");
+  background-repeat: no-repeat;
+  background-size: 65px 65px;
+}
+.uob-logo {
+  opacity: 0.1;
+  margin-left: 20px;
+  height: 280px;
+  background-image: url("/images/uob.jpg");
+  background-repeat: no-repeat;
+  background-size: 280px 280px;
+}
+.challan {
+  text-decoration: underline;
+  margin-top: 10px;
+}
+.challan-no {
+  margin-top: -17px;
+  margin-left: 100px;
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 12px;
+}
+.ubq {
+  margin-top: -270px;
+}
+.fee-collect {
+  line-height: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-decoration: underline;
+  text-align: center;
+}
+.deposit {
+  margin: 60px 0 35px 0;
+}
+.bank {
+  margin: 80px 0 80px 0;
+}
+.table {
+  line-height: 25px;
+  width: 330px;
+}
+.table td {
+  border-bottom: 1px solid gray;
+}
+.amount {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+ul{
+    list-style-type: none;
+    margin: 0px;
+    padding: 15px;
+}
+li {
+ display: inline;
+ padding: 15px;
+ background-color: #A4A4A4;
+}
+li a {
+    color: white;
+    text-decoration: none;
+}
+li:hover {
+ background-color: #D8D8D8;
+}

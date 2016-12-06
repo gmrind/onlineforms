@@ -1,0 +1,14 @@
+en:
+  activerecord:
+    attributes:
+      bankslip:
+       fname: "Father's Name"
+       aname: "Applicant Name"
+       exad_name: "Exam/Admission"
+       ddate: "Date"
+       amount: "Amount"
+       cnic: "CNIC No#"
+      registration:
+        sname:  "Student name"
+        fname:  "Father's name"
+        d_of_b: "Date of Birth"

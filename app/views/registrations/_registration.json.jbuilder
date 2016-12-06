@@ -1,0 +1,2 @@
+json.extract! registration, :id, :sname, :fname, :d_of_b, :name_of_year_examination, :previous_registration_no, :board_university, :local_domicile, :religion, :cnic_no, :permanent_address, :present_address, :challan_no, :amount, :registration_date, :created_at, :updated_at
+json.url registration_url(registration, format: :json)

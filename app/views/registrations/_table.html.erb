@@ -1,0 +1,14 @@
+<table class="examination">
+    <% for examination in @registration.examinations %>
+      <tr>
+          <td></td>
+          <td></td>
+          <td class="year"><%= examination.year %>                     </td>
+          <td class="annual_supply"><%= examination.annual_supply %>            </td>
+          <td class="roll_no"><%= examination.roll_no %>                  </td>
+          <td class="division"><%= examination.division %>                 </td>
+          <td class="subject_pass"><%= examination.subject_pass.upcase %>             </td>
+          <td class="board_uni"><%= examination.board_uni.upcase %>                </td>
+      </tr>
+    <% end %>
+</table>

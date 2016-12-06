@@ -1,0 +1,26 @@
+<div class="logo"><%= image_tag("https://1.bp.blogspot.com/-6T_we13FNNo/WDszVN0oC8I/AAAAAAAAArQ/JL1iJfyvQGsyquk7BEsWlsPa4W55uyfuACLcB/s1600/uob.jpg", size: "65x65") %></div>
+<div class="challan">Challan No:</div><div class="challan-no"><%= @bankslip.id %></div>
+<div class="uob-logo"><%= image_tag("https://1.bp.blogspot.com/-6T_we13FNNo/WDszVN0oC8I/AAAAAAAAArQ/JL1iJfyvQGsyquk7BEsWlsPa4W55uyfuACLcB/s1600/uob.jpg", size: "280x280") %></div>
+<div class="ubq">University of Balochistan Quetta<br><u>Computer Generated Deposit Slip</u></div>
+<div class="fee-collect"><%= @bankslip.bank.bname %> Bank Fee Collection Account Number <br><%= @bankslip.bank.bacno %><br>
+University of Balochistan, Quetta Branch</div>
+
+<table class="table">
+  <tr>    <td>Applicant Name:</td>                    <td><%= @bankslip.aname.upcase %></td>                  </tr>
+  <tr>    <td>Father's Name:</td>                     <td><%= @bankslip.fname.upcase %></td>                  </tr>
+  <tr>    <td>CNIC No:</td>                           <td><%= @bankslip.cnic %></td>                          </tr>
+  <tr>    <td>Name of Exam<br> OR Admission:</td>     <td><%= @bankslip.exad_name.upcase %></td>              </tr>
+  <tr>    <td>Department:</td>                        <td><%= @bankslip.department.dname %></td>              </tr>
+  <tr>    <td>Date:</td>                              <td><%= @bankslip.ddate.strftime("%d-%m-%Y") %></td>    </tr>
+  <tr>    <td class="amount">Amount:</td>             <td class="amount">Rs. <%= @bankslip.amount %>/=</td>   </tr>
+  <tr>    <td>Purpose:</td>                           <td><%= @bankslip.purpose.pname %></td>                 </tr>
+</table>
+
+<div class="deposit">Depositer Signatures:___________________</div>
+<div>Cashier:___________ Officer:____________</div>
+<div class="bank">Bank Stamp:</div>
+<div class="notice">
+Note: Bank stamp is required on the deposit slip.<br>
+The deposited Fee/Amount will Not be Refunded.<br>
+Over-Writting or Any modification is Not Accepted.
+</div>

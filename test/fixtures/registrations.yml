@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sname: MyString
+  fname: MyString
+  d_of_b: 2016-11-13
+  name_of_year_examination: MyString
+  previous_registration_no: MyString
+  board_university: MyString
+  local_domicile: MyString
+  religion: MyString
+  cnic_no: MyString
+  permanent_address: MyText
+  present_address: MyText
+  challan_no: MyString
+  amount: 1
+  registration_date: 2016-11-13
+
+two:
+  sname: MyString
+  fname: MyString
+  d_of_b: 2016-11-13
+  name_of_year_examination: MyString
+  previous_registration_no: MyString
+  board_university: MyString
+  local_domicile: MyString
+  religion: MyString
+  cnic_no: MyString
+  permanent_address: MyText
+  present_address: MyText
+  challan_no: MyString
+  amount: 1
+  registration_date: 2016-11-13

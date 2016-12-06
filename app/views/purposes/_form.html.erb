@@ -1,0 +1,25 @@
+<%= form_for(@purpose) do |f| %>
+  <% if @purpose.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@purpose.errors.count, "error") %> prohibited this purpose from being saved:</h2>
+
+      <ul>
+      <% @purpose.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :pname %><br>
+    <%= f.text_field :pname %>
+  </div>
+  <div class="field">
+    <%= f.label :department_id %><br>
+    <%= f.collection_select :department_id, Department.order(:dname), :id, :dname, prompt: true %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

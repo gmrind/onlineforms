@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ename: MyString
+  year: MyString
+  annual_supply: MyString
+  roll_no: MyString
+  division: MyString
+  subject_pass: MyString
+  board_uni: MyString
+  registration_id: 1
+
+two:
+  ename: MyString
+  year: MyString
+  annual_supply: MyString
+  roll_no: MyString
+  division: MyString
+  subject_pass: MyString
+  board_uni: MyString
+  registration_id: 1

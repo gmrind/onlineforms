@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_for(@bankslip) do |f| %>
+        <% if @bankslip.errors.any? %>
+          <div class="alert alert-danger alert-dismissible" role="alert">
+            <strong><%= pluralize(@bankslip.errors.count, "error") %> prohibited this bankslip from being saved:</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <ol>
+            <% @bankslip.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ol>
+          </div>
+        <% end %>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.text_field :aname, class:"form-control", placeholder: "Applicant Name" %><br>
+          </div>
+          <div class="col-md-6">
+            <%= f.text_field :fname, class:"form-control", placeholder: "Father's Name" %><br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.text_field :cnic, class:"form-control", placeholder: "CNIC No" %><br>
+          </div>
+          <div class="col-md-6">
+            <%= f.text_field :exad_name, class:"form-control", placeholder: "Name of Exam/Admission" %><br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.collection_select :department_id, Department.order(:dname), :id, :dname, {prompt: "Select Department"}, {class: "form-control"} %><br>
+          </div>
+          <div class="col-md-6">
+            <%= f.grouped_collection_select :purpose_id, Department.order(:dname), :purposes, :dname, :id, :pname, {prompt: "Select Purpose"}, {class: "form-control"} %><br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+              <div class='input-group date' id='datetimepicker10'>
+                <%= f.text_field :ddate, class:"form-control", placeholder: "Choose Date" %><span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+              </div>
+          </div>
+          <div class="col-md-4">      
+            <%= f.collection_select :bank_id, Bank.order(:bname), :id, :bname, {prompt: "Select Bank"}, {class: "form-control"} %>
+          </div>
+          <div class="col-md-4">
+            <%= f.text_field :amount, class:"form-control", placeholder: "Rs." %>
+          </div>
+        </div><br>
+        <%= f.submit "Generate Bankslip", class: "btn btn-primary btn-group-justified" %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,1 @@
+json.partial! "bankslips/bankslip", bankslip: @bankslip

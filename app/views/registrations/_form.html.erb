@@ -1,0 +1,119 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_for(@registration) do |f| %>
+        <%= render "errors" %>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.text_field :sname, placeholder: "Student Name", class: "form-control" %>
+          </div>
+          <div class="col-md-6">
+            <%= f.text_field :fname, placeholder: "Father's Name", class: "form-control" %><br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.text_field :name_of_year_examination, placeholder: "Name of Year Examination", class: "form-control" %>
+          </div>
+          <div class="col-md-6">
+            <div class='input-group date' id='datetimepicker10'>
+              <%= f.text_field :d_of_b, class:"form-control", placeholder: "Date of Birth DD-MM-YYYY" %><span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span></span>
+            </div><br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.text_field :previous_registration_no, placeholder: "Previous Registration", class: "form-control" %>
+          </div>
+          <div class="col-md-6">
+            <%= f.text_field :board_university, placeholder: "Board/University", class: "form-control" %><br>
+          </div>
+        </div>  
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.text_field :local_domicile, placeholder: "Local/Domicile", class: "form-control" %>
+          </div>
+          <div class="col-md-6">
+            <%= f.text_field :religion, placeholder: "Religion", class: "form-control" %><br>
+          </div>
+        </div> 
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.text_field :cnic_no, placeholder: "CNIC xxxxx-xxxxxxx-x", class: "form-control" %>
+          </div>
+          <div class="col-md-6">
+            <div class='input-group date' id='datetimepicker11'>
+              <%= f.text_field :registration_date, class:"form-control", placeholder: "Registration Date DD-MM-YYYY" %>
+              <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+            </div><br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.text_area :permanent_address, placeholder: "Permanent Address", class: "form-control" %>
+          </div>
+          <div class="col-md-6">
+            <%= f.text_area :present_address, placeholder: "Present Address", class: "form-control" %><br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.text_field :challan_no, placeholder: "Challan No#", class: "form-control" %>
+            <i>If not generated a bankslip</i> <%= link_to "Click Here", new_bankslip_path %>.
+          </div>
+          <div class="col-md-6">
+            <%= f.text_field :amount, placeholder: "Rs. Amount", class: "form-control" %><br><br>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <%= f.collection_check_boxes :subject_ids, Subject.all, :id, :subname do |b| %>
+              <%= b.check_box %>
+              <%= b.label %>
+            <% end %>
+          </div>
+        </div>
+        <%= f.fields_for :examinations do |e| %>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-6">
+              		<%= e.select(:ename, options_for_select([['S.S.C (Matric)'], ['H.S.C (F.A/F.Sc)']], 
+              		:selected => e.object.ename), {prompt: "Select Degree"}, {class: "form-control"}) %>
+                </div>
+                <div class="col-md-6">
+              		<%= e.text_field :year, placeholder: "Year", class: "form-control" %><br>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+              		<%= e.select(:annual_supply, options_for_select([['Annual'], ['Supply']], 
+              		:selected => e.object.annual_supply), {prompt: true}, {class: "form-control"}) %>
+                </div>
+                <div class="col-md-4">
+              		<%= e.text_field :roll_no, placeholder: "Roll No#", class: "form-control" %>
+                </div>
+                <div class="col-md-4">
+                	<%= e.select(:division, options_for_select([['1st Division'], ['2nd Division'], ['3rd Division']], 
+                	:selected => e.object.division), {prompt: true}, {class: "form-control"}) %><br>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                	<%= e.text_field :subject_pass, placeholder: "Subject Pass", class: "form-control" %>
+                </div>
+                <div class="col-md-6">
+              		<%= e.text_field :board_uni, placeholder: "Board Name", class: "form-control" %><br>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <div class="row">
+          <%= f.submit "Submit Registration", class: "btn btn-primary btn-group-justified" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
