@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.5'
-gem 'rack-cache'
-gem 'nokogiri', '~> 1.6.1'
+#gem 'rack-cache'
+#gem 'nokogiri', '~> 1.6.1'
 gem 'sass-rails', '~> 5.0'
 gem 'sqlite3'
 #gem 'pg'
