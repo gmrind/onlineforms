@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.5'
 gem 'rack-cache'
-gem 'nokogiri', '~> 1.6.1'
+gem 'nokogiri', '~> 1.13.9'
 gem 'sass-rails', '~> 5.0'
 #gem 'sqlite3'
 gem 'pg'
