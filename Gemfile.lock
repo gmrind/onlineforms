@@ -85,10 +85,12 @@ GEM
       railties (>= 3.1)
     nokogiri (1.6.1)
       racc (~> 1.4)
-    pdfkit (0.8.7)
+    pdfkit (0.8.7.2)
     pg (1.4.4)
     racc (1.6.0)
     rack (1.6.13)
+    rack-cache (1.13.0)
+      rack (>= 0.4)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.5)
@@ -170,8 +172,10 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   momentjs-rails (>= 2.9.0)
+  nokogiri (~> 1.6.1)
   pdfkit
   pg
+  rack-cache
   rails (= 4.2.5)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
